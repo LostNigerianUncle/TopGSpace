@@ -1,5 +1,5 @@
 import numpy as np
-from orbitalconstants import MU_EARTH # type: ignore
+from orbitalconstants import MU_EARTH
 
 def gravitational_acceleration(altitude):
     """
