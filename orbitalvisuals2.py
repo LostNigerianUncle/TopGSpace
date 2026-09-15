@@ -27,3 +27,8 @@ if __name__ == "__main__":
     fig = plot_orbit(positions)
     fig.savefig("orbit_output.png", dpi = 150)
     print("Saved plot to orbit_output.png")
+
+matplotlib.animation.FuncAnimation(
+    fig, update, frames = lens(positions), interval = dt * 1000, repeat = False
+)
+plt.show()
