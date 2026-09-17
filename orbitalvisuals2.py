@@ -1,6 +1,7 @@
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import numpy as np
 
 from matplotlib.path import Path
 from matplotlib.patches import PathPatch
