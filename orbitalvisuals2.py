@@ -29,26 +29,40 @@ def plot_orbit(positions, title = "2D Orbital Simulation (Euler Integration)"):
     fig.tight_layout()
     return fig
 
-def make_spacecraft_patch(x, y, size = 1.0, angle = 0.0, color = 'orangered'):
-    """
-    Create a triangular patch representing a spacecraft.
+class verts:
+    """Convenient polygon representation for the spacecraft body"""
+    def __init__(self, size = 500000):
+        self.size = float(size)
+        self._points = np.array([
+            (0.0, self.size),
+            (self.size * 0.4, -self.size * 0.6),
+            (0.0, -self.size * 0.3),
+            (-self.size * 0.4, -self.size * 0.6),
+            (0.0, self.size),
+        ], dtype = float)
 
-    Parameters:
-    x (float): x-coordinate of the spacecraft's position.
-    y (float): y-coordinate of the spacecraft's position.
-    size (float): Size scaling factor for the spacecraft.
-    angle (float): Rotation angle in degrees.
-    color (str): Color of the spacecraft.
+    @property
+    def points(self):
+        return self._points.copy()
 
-    Returns:
-    matplotlib.patches.PathPatch: A patch representing the spacecraft.
-    """
-    vertices = np.array([[0, 1], [-0.5, -0.5], [0.5, -0.5], [0, 1]]) * size
-    codes = [Path.MOVETO, Path.LINETO, Path.LINETO, Path.CLOSEPOLY]
-    path = Path(vertices, codes)
+    def as_list(self):
+        return self._points.tolist()
 
-    transform = Affine2D().rotate_deg(angle).translate(x, y)
+    def __iter__(self):
+        return iter(self._points.tolist())
+
+    def __len__(self):
+        return len(self._points)
+
+    def __getitem__(self, index):
+        return self._points[index]
+
+def make_spacecraft_patch(x, y, heading_deg, size = 300000):
+    spacecraft_verts = verts(size)
+    path = Path(spacecraft_verts.as_list())
+    transform = Affine2D().rotate_deg(heading_deg - 90).translate(x, y) + ax.transData
     return PathPatch(path, transform = transform, color = 'orangered', zorder = 4)
+    
 
 
 if __name__ == "__main__":
