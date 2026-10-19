@@ -8,13 +8,16 @@ from matplotlib.patches import PathPatch
 from matplotlib.transforms import Affine2D
 
 from orbitalsimulate2 import run_simulation
-from orbitalconstants import R_EARTH
+from orbitalconstants import R_EARTH, R_MOON
 
 def plot_orbit(positions, title = "2D Orbital Simulation (Euler Integration)"):
     fig, ax = plt.subplots(figsize = (6, 6)) 
 
     earth = plt.circle((0, 0), R_EARTH, color = 'dodgerblue', label = "Earth", alpha = 0.5, zorder = 2)
     ax.add_patch(earth)
+
+    moon = plt.Circle((38430000, 0), R_MOON, color = 'lightgray', label = "Moon", alpha = 0.5, zorder = 2)
+    ax.add_patch(moon)
 
     ax.plot(positions[:, 0], positions[:, 1], color = 'orangered',
             linewidth = 1.2, label = "Spacecraft Trajectory", zorder = 1)
@@ -78,6 +81,6 @@ if __name__ == "__main__":
         plot_orbit(positions[:frame + 1], ax = ax)
 
 matplotlib.animation.FuncAnimation(
-    fig, update, frames = lens(positions), interval = dt * 1000, repeat = False
+    fig, update, frames = lens(positions), interval = dt * 200, repeat = False
 )
 plt.show()
