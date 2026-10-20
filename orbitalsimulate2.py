@@ -1,7 +1,7 @@
 import numpy as np
 from os import name
 from orbitalphysics import euler_step
-from orbitalconstants import MU_EARTH, R_EARTH
+from orbitalconstants import MU_EARTH, R_EARTH, MU_MOON, R_MOON
 
 def circular_orbit_velocity(altitude):
     """
@@ -13,8 +13,9 @@ def circular_orbit_velocity(altitude):
     Returns:
     float: Circular orbit velocity in meters per second.
     """
-    r = R_EARTH + altitude  # Total distance from Earth's center
-    return np.sqrt(MU_EARTH / r)
+    r = R_EARTH + altitude  # Total distance from Earth's centre
+    r = R_MOON + altitude # Total distance from Moon's centre
+    return np.sqrt(MU_EARTH / r), np.sqrt(MU_MOON / r)
 
 def run_simulation(initial_altitude, time_step, total_time):
     """
@@ -29,7 +30,8 @@ def run_simulation(initial_altitude, time_step, total_time):
     list: List of positions and velocities at each time step.
     """
     # Initial conditions
-    r = R_EARTH + initial_altitude  # Total distance from Earth's center
+    r = R_EARTH + initial_altitude  # Total distance from Earth's centre
+    r = R_MOON + initial_altitude # Total distance from Moon's centre
     v = circular_orbit_velocity(initial_altitude)  # Circular orbit velocity
 
     # Initialize position and velocity vectors
