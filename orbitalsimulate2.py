@@ -29,11 +29,18 @@ def run_simulation(initial_altitude, time_step, total_time):
     Returns:
     list: List of positions and velocities at each time step.
     """
+    if altitude_km < 0:
+        raise ValueError("altitude_km must be non-negative")
+    if num_orbits <= 0 or steps_per_orbit <= 0:
+        raise ValueError("num_orbits and steps_per_orbit must be positive")
     # Initial conditions
     r = R_EARTH + initial_altitude  # Total distance from Earth's centre
     r = R_MOON + initial_altitude # Total distance from Moon's centre
     v = circular_orbit_velocity(initial_altitude)  # Circular orbit velocity
-
+    position = np.array([earthradius, 0.0])
+    velocity = np.array([0.0, v[0]]) # Value error: circular_orbit_velocity returns a tuple, but only the first value is used for Earth. The second value for Moon is ignored.
+    positions = np.empty((total_steps + 1, 2))
+    
     # Initialize position and velocity vectors
     position = np.array([r, 0])  # Start at (r, 0)
     velocity = np.array([0, v])   # Velocity perpendicular to position
