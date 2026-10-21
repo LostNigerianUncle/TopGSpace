@@ -19,5 +19,12 @@
     When I try to run the scripts that use Matplotlib, a ModuleNotFoundError comes up saying, “No module named ‘matplotlib’”.
     To fix this problem, I had to install the Matplotlib module from the terminal using the command “python3 -m pip install matplotlib”.
     Though the issue did not fix immediately, after closing Visual Studio Code and reopening it, it looks like the file runs perfectly fine without the ModuleNotFoundError.</p>
+  
+  <h2>Error 2 (20/10/26)</h2>
+  <p>My next error occurred while I was trying to integrate the moon into my simulation. Though I had the orbit animation for the Earth working perfectly fine, the addition of the moon has caused
+    it to stop, and I realised that this is because I have not added the moon's constants into the other files that use the planet constants. After adding the moon's constants to the other files,
+    I now get a ValueError which states, "setting an array element with a sequence. The requested array has an inhomogenous shape after 1 dimensions. The detected shape was (2,) + inhomogenous part."
+    I found out that the error was caused by my code for the circular orbit velocity, which I made to return two values for the Earth and the Moon. This configuration caused the value error to appear because
+    the velocity variable can only expect one value instead of two. For now, I have adjusted my velocity variable to take only the first value (the Earth) and ignore the second value (the Moon).</p>
 </body>
 </html>
