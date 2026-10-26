@@ -56,3 +56,27 @@ def hohmann_transfer_velocity(r1, r2):
     
     return delta_v1, delta_v2
 
+def on_press(key):
+    """
+    Handle key press events for the simulation.
+
+    Parameters:
+    key: The key that was pressed.
+    """
+    if key == 'up':
+        print("Increase altitude")
+    elif key == 'down':
+        print("Decrease altitude")
+    elif key == 'left':
+        print("Rotate left")
+    elif key == 'right':
+        print("Rotate right")
+
+def on_release(key):
+    """
+    Handle key release events for the simulation.
+
+    Parameters:
+    key: The key that was released.
+    """
+    print(f"Key released: {key}")
