@@ -1,6 +1,6 @@
 import numpy as np
 from os import name
-from orbitalphysics import euler_step
+from orbitalphysics import euler_step, hohmann_transfer_velocity, on_press, on_release
 from orbitalconstants import MU_EARTH, R_EARTH, MU_MOON, R_MOON
 
 def circular_orbit_velocity(altitude):
