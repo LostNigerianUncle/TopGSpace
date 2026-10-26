@@ -23,6 +23,8 @@ def plot_orbit(positions, title = "2D Orbital Simulation (Euler Integration)"):
             linewidth = 1.2, label = "Spacecraft Trajectory", zorder = 1)
     ax.scatter(positions[0, 0], positions[0, 1], color = 'black',
                s = 25, zorder = 3, label = "Start Position")
+     ax.scatter(positions[-1, 0], positions[-1, 1], color = 'grey',
+               s = 25, zorder = 3, label = "Spacecraft")
 
     ax.set_aspect("equal")
     ax.set_xlabel("x [m]")
