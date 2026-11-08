@@ -26,5 +26,12 @@
     I now get a ValueError which states, "setting an array element with a sequence. The requested array has an inhomogenous shape after 1 dimensions. The detected shape was (2,) + inhomogenous part."
     I found out that the error was caused by my code for the circular orbit velocity, which I made to return two values for the Earth and the Moon. This configuration caused the value error to appear because
     the velocity variable can only expect one value instead of two. For now, I have adjusted my velocity variable to take only the first value (the Earth) and ignore the second value (the Moon).</p>
+
+  <h2>Error 3 (29/10/26)</h2>
+  <p>Today, I have just discovered that there is a Python library dedicated to creating orbital simulations called 'Orbital'. I saw that this library can produce much more accurate orbital plots with less coding,
+    so I think it would be good to use for my project. After some time testing out the library, I have found it to be quite good. But while the still images of the planet orbits look good, actually animating the 
+    orbit to move around the planets is what will make it interesting. Animating the orbit in this library seems very simple as you just have to input "animate = true" on the line that creates the graph. However, 
+    The animation doesn't work even though its just one command. I kept trying to make it work but the orbit just won't move which is very frustrating. Implementing this library into my main project will improve the
+    accuracy of the orbits, but if I can't get it working in time, then I'm not sure if it will be feasable to get it implemented before the due date.</p>
 </body>
 </html>
