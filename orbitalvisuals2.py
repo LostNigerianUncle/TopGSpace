@@ -20,6 +20,12 @@ def plot_orbit(positions, title = "2D Orbital Simulation (Euler Integration)", f
     else:
         fig = ax.figure
 
+    L = 6e7 # Set the limits for the plot
+    x = positions[:, 0]
+    y = positions[:, 1]
+    ax.set.xlim(-L, L)
+    ax.set.ylim(-L, L)
+
     earth = plt.circle((0, 0), R_EARTH, color = 'dodgerblue', label = "Earth", alpha = 0.5, zorder = 2)
     ax.add_patch(earth)
 
