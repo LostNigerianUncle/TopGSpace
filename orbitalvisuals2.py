@@ -10,8 +10,15 @@ from matplotlib.transforms import Affine2D
 from orbitalsimulate2 import run_simulation
 from orbitalconstants import R_EARTH, R_MOON
 
-def plot_orbit(positions, title = "2D Orbital Simulation (Euler Integration)"):
-    fig, ax = plt.subplots(figsize = (6, 6)) 
+def plot_orbit(positions, title = "2D Orbital Simulation (Euler Integration)", fig = None, ax = None):
+    if ax is None:
+        if fig is None:
+            fig, ax = plt.subplots(figsize = (6, 6))
+        else:
+            ax = fig.add_subplot(111)
+
+    else:
+        fig = ax.figure
 
     earth = plt.circle((0, 0), R_EARTH, color = 'dodgerblue', label = "Earth", alpha = 0.5, zorder = 2)
     ax.add_patch(earth)
