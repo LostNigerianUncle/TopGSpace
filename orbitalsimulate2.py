@@ -6,7 +6,6 @@ from orbitalconstants import MU_EARTH, R_EARTH, MU_MOON, R_MOON
 def circular_orbit_velocity(altitude):
     """
     Calculate the circular orbit velocity at a given altitude above Earth's surface.
-
     """
     r = R_EARTH + altitude  # Total distance from Earth's centre
     r = R_MOON + altitude # Total distance from Moon's centre
@@ -15,12 +14,12 @@ def circular_orbit_velocity(altitude):
 def run_simulation(initial_altitude, time_step, total_time):
     """
     Run a simulation of a satellite in circular orbit around Earth.
-
     """
     if altitude_km < 0:
         raise ValueError("altitude_km must be non-negative")
     if num_orbits <= 0 or steps_per_orbit <= 0:
         raise ValueError("num_orbits and steps_per_orbit must be positive")
+        
     # Initial conditions
     r = R_EARTH + initial_altitude  # Total distance from Earth's centre
     r = R_MOON + initial_altitude # Total distance from Moon's centre
