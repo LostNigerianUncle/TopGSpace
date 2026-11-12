@@ -7,11 +7,6 @@ def circular_orbit_velocity(altitude):
     """
     Calculate the circular orbit velocity at a given altitude above Earth's surface.
 
-    Parameters:
-    altitude (float): Altitude above Earth's surface in meters.
-
-    Returns:
-    float: Circular orbit velocity in meters per second.
     """
     r = R_EARTH + altitude  # Total distance from Earth's centre
     r = R_MOON + altitude # Total distance from Moon's centre
@@ -21,13 +16,6 @@ def run_simulation(initial_altitude, time_step, total_time):
     """
     Run a simulation of a satellite in circular orbit around Earth.
 
-    Parameters:
-    initial_altitude (float): Initial altitude above Earth's surface in meters.
-    time_step (float): Time step for the simulation in seconds.
-    total_time (float): Total simulation time in seconds.
-
-    Returns:
-    list: List of positions and velocities at each time step.
     """
     if altitude_km < 0:
         raise ValueError("altitude_km must be non-negative")
